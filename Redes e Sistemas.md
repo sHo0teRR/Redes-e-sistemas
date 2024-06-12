@@ -124,7 +124,7 @@ O -2 é devido aos dois endereços principais. Gateway (roteador) é o primeiro 
 
 # Domínio, DNS e Latência #
 
-DNS - Domain name system, nome dos sites, nomeia os ips.
+[DNS] - Domain name system, nome dos sites, nomeia os ips.
 Dividido em vários servidores. Servidores raizes - recebem a requisição e passam para servidores subordinados.
 
 Servidor Raiz - Root
@@ -134,4 +134,41 @@ Servidor destino
 Após o barra sempre são diretórios no endereço.
 
 ![](image-3.png)
+
+[Latência] - Tempo da requisição até o destino. Mínima = bom, grande = lentidão.
+Cash: armazena a informação de onde ja acessei para melhorar a latência. CDN, replica informações de servidores longe por exemplo.
+
+# Principais comandos de configuração #
+
+ipconfig - mostra as configs de rede 
+cls - limpa o bash
+flush dns - limpa o dns da maquina
+pings - verificar se tem conexão com o destino e a latência
+nslookup google.com - Servidor 8.8.8.8 - servidor google que me da resoluções de dominio
+tracert google.com - mapeia quantos saltos, ou roteadores, me conectei ate chegar ao google
+route print - mostra a tabela de roteamento 
+netstate - mapeia quais portas estão sendo usadas no computador
+
+# Segurança #
+
+SSO
+Firewall - Portão que impede e analisa tudo o q ta entrando
+VPN - Estabelece uma conexão criptografada de ponta a ponta, mais segura. Empresa empresa, funcionário empresa (cliente to site)
+Ataque de segurança - DOS - negação de serviço, atacante tentando invadir de uma unica maquina. DDOS - Ataque vem de vários lugares pra derrubar um servidor. ransomware - Acessa minha rede, meu servidor e criptografa meus dados. Scare injection - tenta dar comando sql.
+
+Wireless - redes por ondas de radio frequencia. Banda (canais).
+
+# Wireless #
+
+CISCO PACKET TRACER
+
+![](image-4.png)
+
+![alt text](image-5.png)
+
+![alt text](image-6.png)
+
+# Algoritmos #
+
+Sequência de regras pra resolver problemas.
 
