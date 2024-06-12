@@ -114,3 +114,24 @@ Definidos pela quantidade de dispositivos que usarão a rede.
 
 ![alt text](image.png)
 
+![alt text](image-1.png)
+
+Máscara de rede - Tem o endereço ip, além de ser um endereço, o ip determina qual parte dele é de endereço e qual parte que determina quantas maquinas consigo alocar nesta rede.
+
+![alt text](image-2.png)
+
+O -2 é devido aos dois endereços principais. Gateway (roteador) é o primeiro endereço da rede (192.168.10.1). E o endereço de broadcast, que manda para todos os endpoints conectados na rede.
+
+# Domínio, DNS e Latência #
+
+DNS - Domain name system, nome dos sites, nomeia os ips.
+Dividido em vários servidores. Servidores raizes - recebem a requisição e passam para servidores subordinados.
+
+Servidor Raiz - Root
+TLD - Top Level domain = .org .com .net
+Servidor destino
+
+Após o barra sempre são diretórios no endereço.
+
+![](image-3.png)
+
