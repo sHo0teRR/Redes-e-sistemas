@@ -129,9 +129,44 @@ tar -cvzf (z de gzip) arquivo de saida linux.tar.gz pasta0* (pega tudo depois do
 
 tar -xvzf linux.tar.gz (descompacta, mostra na tela, arquivo tipo z, e defino quem vou descompactar)
 
+# Shell script e permissões #
 
+Script para fazer as coisas
 
+vim script.sh (extensão script, shell)
+colocar uma linha no inicio dizendo qual interpretador de comandos ele interpretara o script
 
+#!/bin/bash (ele que vai interpretar)
+segundos="$1" - (diz q posso passar varios parametros para o sleep)
+
+echo "."(terminal repete oq eu escrever)
+sleep 1(adiciona pausa ate a execução da proxima coisa do script por um segundo)
+echo ".."
+sleep 1 $segundos
+echo "..."
+sleep 1 $segundos
+echo "...."
+sleep 1 $segundos
+echo "....."
+sleep 1 $segundos
+
+esc
+
+:wq
+
+Para chamar o script, tenho que dar permissão ao script para executar. Lá no ls verificar após o tracinho do início as permissoes do arquivo, o q meu usuario pode fazer cm o arquivo (rw somente read and write)
+
+para permitir:
+
+chmod +x script.sh (permissao de execução)
+
+./script.sh 2 ( executar o script e definindo como 2 segundos os sleeps)
+
+#- uso para colocar comentarios tbm no texto ou script, lembretes.
+
+# BUSCA DE ARQUIVOS E DIRETORIOS #
+
+COMANDO FIND
 
 
 
