@@ -166,9 +166,129 @@ chmod +x script.sh (permissao de execução)
 
 # BUSCA DE ARQUIVOS E DIRETORIOS #
 
-COMANDO FIND
+COMANDO FIND - buscar o script= posso especificar um caminho para iniciar a busca
 
+find /home/andre - name "script.sh"
 
+CTRL C = aborta execução.
 
+find /home/andre - name "script.sh" -type f (tipo file) = elimina alguns tipos de arquivo da busca dele, achando mais rapido.
 
+find / -mtime 5(busca arquivos alterados nos ultimos 5 dias) = usar sudo para ter todas as permissões
+
+sudo find / -size +1MB (Busca arquivos por tamanho)
+
+sudo find /home/andre -name "*.sh" -mtime 3 (busca todos os scripts, todos arquivos final .sh nos ultimos 3 dias)
+
+find --help ( me da todas as possibilidades com find )
+
+# Cloud Computing #
+
+Datacenter - Local para fazer um centro de processamento de dados com diversas redundâncias, energia, internet, resfriamento, etc. Comporta servidores, storages, etc. 
+
+Cloud privada - redhat, vmware. = provedor serviço de cloud privada para gerenciar.
+
+Virtualização - Hypervisor = sistema que permite virtualizar os recursos, criando maquinas virtuais. por exemplo, posso dividir os 8gb de ram dividindo em 4 maquinas virtuais de 20gb.
+
+Cloud Pública - AWS, Azure, google cloud, oracle, IBM = não precisa administrar nenhum datacenter, existem varios espalhados pelo mundo, me oferecendo todos os serviços em um console que posso acessar de qualquer lugar.
+
+Híbrida - usa nuvem privada junto com publica.
+
+# Modelos de utilização #
+
+Servidor, onde centralizo as informações, um site por exemplo. 
+
+![alt text](image-25.png)
+
+On-site - sou responsável por adquirir e manter tudo, servidores, energia, disponibilizar fisicamente, virtualização, hypervisor, SO, recursos de aplicação, tudo. Gerencio do início ao fim.
+
+IAAS - Infraestrutura como serviço. Não me preocupo com configurações de rede, quem passa cabos, quem configura, quem vai comprar e montar e virtualizar fica para o provedor, quero utilizar o serviço mas vc é responsável por isso. Cuido só do SO, da aplicação e dos dados que vou oferecer aos clientes. 
+
+PaaS - Prover rede, virtualização, OS, é do provedor. Não quero mexer com sistema operacinal, apenas quero disponibilizar minha aplicação, meu programa e dados. 
+
+SaaS - Não gerencio nada, o provider gerencia tudo, desde a aplicação até o networking. Como por exemplo o office365, é tudo online, só acesso o site do office e coloco minha planilha.
+
+Serverless - Sem servidor, não preciso administrar meu servidor, coloco um codigo, python, java, e todo o gerenciamento de memoria, processamento, é gerenciado pelo provedor. sob demanda, executei, provisionei, derruba o ambiente.
+
+# Principais serviços #
+
+IAM - Gerenciador de usuários
+EC2 - Serviço de provisionamento de instâncias.
+
+Latência - Quanto mais perto eu estiver fisicamente do servidor, menor é a latência, velocidade maior.
+
+RDS - Oferece plataforma como serviço, provisiona tudo, só preciso inserir meu esquema de banco de dados relacional.
+dynamoDB - oferece estrutura de banco nao relacional, tenho tabelas independente entre elas e não tenho uma estrutra de como o banco deve funcionar.
+
+Amazon S3 - Armazenamento de qualquer tipo de arquivo.
+
+# Arquitetura Cloud #
+
+Well Architected Framework - Padrão de boas práticas que a AWS com muitos fornecedores e clientes, com muitas instruçções de como construir aplicações seguras e confiáveis, e saudáveis.
+
+- Excelência Operacional = Traz visão de execução, melhoria continua de processos, operar sistemas melhor excelencia
+- Segurança - manter a aplicação mais segura possivel
+- Confiabilidade - aplicação seja resiliente, suporte desastres recover, indisponibilidades, que possa voltar automaticamente
+- Eficiência e Performance - alocar recursos da melhor forma possivel, qual servidor vai subir, com tanto de memoria, porque isso e etc.
+- Otimização de custos  - redução de custo ao maximo, otimizar aplicação com gasto menor serveless.
+- Sustentabilidade - Recente, a ideia é, como a aplicalção e infraestrutubra vai se comportar com relação a sustentabilidade do planeta. Um datacenter por exemplo, deve consumir baixa energia, baixa poluição, etc. 
+
+Padrões de arquitetura
+
+RESILIENCIA - Primeiramente deve ser resiliente, arquitetura pode sofrer, apanhar, ficar indisponível mas ela consegue voltar ao seu estado natural, de forma automática, autônoma.  RESILIENCIA.
+
+ESCALABILIDADE - Considerar a possibilidade da aplicação sempre conseguir escalar, conseguir acompanhar o consumo, escala conforme a necessidade e volume, de 100 clientes a 1000 clientes de forma autônoma. Observar a demanda através de alarmes, metricas, etc.
+
+PERFORMANCE -  Latência não pode ser alta, executa todo seu processo e tarefas no menor tempo possível e da melhor forma possível.
+
+AUTOSCALING EC2 - Criei uma maquina virtual que escala automaticamente caso atinja 50% de seu uso por mais de 60 segundos, quando isso acontece é utilizado uma segunda instância, um outro pc.
+
+# Infraestrutura como códigos #
+
+Terraform é agnóstico, pode criar em qualquer servidor.
+Cloudformation - Não agnóstico, é exclusivo aws, só permite criar recursos dentro da aws. Cria instancia através da stack (código), sem console, apenas importante o template (comandos).
+
+![alt text](image-26.png)
+
+# Deployment em Cloud e esteiras de CI/CD #
+
+![alt text](image-27.png)
+
+PIPELINE:
+CI
+Source - Onde codigo esta armazenado
+Build - formalizar o executavel da aplicação, pronta pra ser testada
+CD
+Test - Teste automatizado
+Staging - Homologação, stakeholders, gerente, é realmente o que vc precisa? É o que propomos a entregar?
+Production - Entra em produção
+
+CI = CONTINUOUS INTEGRATION - BOTAR CODIGO NO REPOSITORIO E SABER QUE ELE VAI RODAR A APLICAÇÃO.
+CD - CONTINUOUS DELIVERY - ENTREGA CONTINUA, PEGO ARTEFADO E EXECUTO TESTE AUTOMATIZADO, INTEGRADO, TESTAR COMO UM TODO PRA VER SE REALMENTE FUNCIONOU, IMPLANTAÇÃO NA HOMOLOGAÇÃO, PRODUÇÃO.
+
+Continuos Deployment - realiza toda a esteira sem precisar de aprovação.
+
+# Segurança Lógica #
+
+Segurança física, segurança lógica
+treinamentos para colaboradores.
+Trabalha com o mínimo de permissões possíveis para usuários.
+
+Firewall
+VPN
+Backups
+
+# TERRAFORM #
+
+É uma ferramenta de infraasacode IAC, não criar mais ifra via console de forma repetida e manual, mas sim usar um template definido para fazer a automação deste processo.
+
+Automação junto a propria cloud.
+
+Terraform usa a linguagem em Go. e é mantido pela hashcorp.
+
+É um código opensource, aberto o codigo fonte, assim como linux.
+
+Ele é agnóstico, excuta em várias clouds (aws, azure, gcp)
+
+# Workflow e lifecycle do Terraform #
 
